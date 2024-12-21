@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: three-tier
   labels:
-    role: frontend
+    app: frontend
     env: demo
 spec: 
   replicas: 1
