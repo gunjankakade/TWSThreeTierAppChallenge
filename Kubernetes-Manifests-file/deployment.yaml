@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: three-tier
+  labels:
+    app: frontend
+    env: demo
+spec: 
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels: 
+      role: frontend # Ensure it matches the selector in Service
+  template:
+    metadata:
+      labels:
+        role: frontend # Ensure it matches the Service selector
+    spec: 
+      containers:
+      - name: frontend
+        image: 559050205062.dkr.ecr.ap-south-1.amazonaws.com/frontend:latest
+        imagePullPolicy: Always
+        env:
+          - name: REACT_APP_BACKEND_URL
+            value: "http://backend.amanpathakdevops.study/api/tasks"
+        ports:
+        - containerPort: 3000
