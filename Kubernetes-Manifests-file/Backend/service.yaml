@@ -5,7 +5,7 @@ metadata:
   namespace: three-tier
 spec: 
   ports:
-  - port: 3500
+  - port: 80
     targetPort: 3500  # Ensure this matches the port your container is listening on
     protocol: TCP
   type: LoadBalancer   # Change ClusterIP to LoadBalancer
