@@ -6,7 +6,8 @@ metadata:
 spec: 
   ports:
   - port: 3500
+    targetPort: 3500  # Ensure this matches the port your container is listening on
     protocol: TCP
-  type: ClusterIP
+  type: LoadBalancer   # Change ClusterIP to LoadBalancer
   selector:
     role: api
