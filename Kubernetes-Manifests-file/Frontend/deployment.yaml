@@ -15,11 +15,11 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels: 
-      role: frontend
+      role: frontend # Ensure it matches the selector in Service
   template:
     metadata:
       labels:
-        role: frontend
+        role: frontend # Ensure it matches the Service selector
     spec: 
       imagePullSecrets:
       - name: ecr-registry-secret
